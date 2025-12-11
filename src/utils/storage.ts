@@ -1,9 +1,10 @@
-import { User, DailyMetrics, SharedData } from '../types';
+import { User, DailyMetrics, SharedData, MacroGoals } from '../types';
 
 const STORAGE_KEYS = {
   USER: 'nutrition_user',
   METRICS: 'nutrition_metrics',
   SHARED_DATA: 'nutrition_shared_data',
+  MACRO_GOALS: 'nutrition_macro_goals',
 };
 
 export const storage = {
@@ -48,6 +49,16 @@ export const storage = {
     const shared = storage.getSharedData();
     shared.push(data);
     localStorage.setItem(STORAGE_KEYS.SHARED_DATA, JSON.stringify(shared));
+  },
+
+  // Macro goals management
+  getMacroGoals: (): MacroGoals | null => {
+    const goals = localStorage.getItem(STORAGE_KEYS.MACRO_GOALS);
+    return goals ? JSON.parse(goals) : null;
+  },
+
+  saveMacroGoals: (goals: MacroGoals): void => {
+    localStorage.setItem(STORAGE_KEYS.MACRO_GOALS, JSON.stringify(goals));
   },
 };
 

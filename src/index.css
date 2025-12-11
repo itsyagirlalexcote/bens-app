@@ -3,29 +3,74 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    @apply antialiased;
+  }
+  
   body {
     @apply bg-ios-lightGray text-ios-darkGray;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 
+      'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
   }
 }
 
 @layer components {
   .ios-card {
-    @apply bg-white rounded-ios shadow-sm border border-gray-100;
+    @apply bg-white/80 backdrop-blur-xl rounded-ios-lg shadow-ios-card 
+           border border-white/50;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+  }
+  
+  .ios-card-solid {
+    @apply bg-white rounded-ios-lg shadow-ios-card border border-gray-100/50;
   }
   
   .ios-button {
-    @apply bg-ios-blue text-white font-medium py-3 px-6 rounded-ios 
-           active:opacity-80 transition-opacity;
+    @apply bg-ios-blue text-white font-semibold py-3.5 px-6 rounded-ios-lg
+           shadow-ios active:opacity-90 active:scale-[0.98] 
+           transition-all duration-150 ease-out;
+    background: linear-gradient(180deg, #007AFF 0%, #0051D5 100%);
+  }
+  
+  .ios-button:active {
+    background: linear-gradient(180deg, #0051D5 0%, #003D9E 100%);
+  }
+  
+  .ios-button-secondary {
+    @apply bg-white text-ios-blue font-semibold py-3.5 px-6 rounded-ios-lg
+           shadow-ios border border-ios-blue/20 active:opacity-90 active:scale-[0.98]
+           transition-all duration-150 ease-out;
   }
   
   .ios-input {
-    @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-ios
-           focus:outline-none focus:ring-2 focus:ring-ios-blue focus:border-transparent;
+    @apply w-full px-4 py-3.5 bg-white/90 backdrop-blur-sm 
+           border border-gray-200/60 rounded-ios-lg
+           focus:outline-none focus:ring-2 focus:ring-ios-blue/30 
+           focus:border-ios-blue/50 focus:bg-white
+           transition-all duration-200 text-ios-darkGray;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  
+  .ios-input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  
+  .ios-header {
+    @apply bg-white/80 backdrop-blur-xl border-b border-gray-200/50;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+  }
+  
+  .ios-progress-bar {
+    @apply w-full bg-gray-100/60 rounded-full overflow-hidden;
+    height: 6px;
+  }
+  
+  .ios-progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
   }
 }
 

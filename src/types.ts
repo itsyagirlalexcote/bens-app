@@ -34,3 +34,12 @@ export interface SharedData {
   sharedAt: string;
 }
 
+export interface MacroGoals {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  water: number; // in ml
+  sleep: number; // in hours
+}
+

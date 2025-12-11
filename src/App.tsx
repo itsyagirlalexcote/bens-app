@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import TrackData from './pages/TrackData';
 import CoachView from './pages/CoachView';
+import Profile from './pages/Profile';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -37,6 +38,14 @@ const AppRoutes = () => {
         element={
           <PrivateRoute>
             <CoachView />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute>
+            <Profile />
           </PrivateRoute>
         }
       />

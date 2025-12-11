@@ -24,17 +24,17 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <div className="w-full max-w-md">
-        <div className="ios-card p-8">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-ios-darkGray mb-2">Nutrition Tracker</h1>
-            <p className="text-ios-gray">Sign in to continue</p>
+        <div className="ios-card p-10">
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-bold text-ios-darkGray mb-3 tracking-tight">Nutrition Tracker</h1>
+            <p className="text-ios-gray font-medium">Sign in to continue</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
                 Email
               </label>
               <input
@@ -48,7 +48,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
                 Password
               </label>
               <input
@@ -62,17 +62,19 @@ const Login = () => {
             </div>
 
             {error && (
-              <div className="text-red-500 text-sm text-center">{error}</div>
+              <div className="text-red-500 text-sm text-center font-medium bg-red-50 py-2.5 px-3 rounded-ios-lg border border-red-200">
+                {error}
+              </div>
             )}
 
-            <button type="submit" className="ios-button w-full">
+            <button type="submit" className="ios-button w-full mt-6">
               Sign In
             </button>
           </form>
 
-          <div className="mt-6 text-center text-sm text-ios-gray">
-            <p>Demo: Use any email/password to login</p>
-            <p className="mt-1">Add "coach" to email to access coach view</p>
+          <div className="mt-8 text-center text-sm text-ios-gray space-y-1">
+            <p className="font-medium">Demo: Use any email/password to login</p>
+            <p>Add "coach" to email to access coach view</p>
           </div>
         </div>
       </div>
