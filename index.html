@@ -9,6 +9,21 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Handle 404 redirect for GitHub Pages SPA routing
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          var url = new URL(redirect);
+          var path = url.search.replace(/^\?\/?/, '');
+          if (path) {
+            path = path.replace(/~and~/g, '&');
+            history.replaceState(null, null, path + url.hash);
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
 

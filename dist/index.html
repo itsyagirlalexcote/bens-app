@@ -5,11 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nutrition Tracker</title>
-    <script type="module" crossorigin src="/bens-app/assets/index-BCTZxJzW.js"></script>
+    <script type="module" crossorigin src="/bens-app/assets/index-DmIfLgVW.js"></script>
     <link rel="stylesheet" crossorigin href="/bens-app/assets/index-a0eReO8m.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Handle 404 redirect for GitHub Pages SPA routing
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          var url = new URL(redirect);
+          var path = url.search.replace(/^\?\/?/, '');
+          if (path) {
+            path = path.replace(/~and~/g, '&');
+            history.replaceState(null, null, path + url.hash);
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
 
