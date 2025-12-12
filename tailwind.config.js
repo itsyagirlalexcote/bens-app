@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -20,7 +21,21 @@ export default {
           systemGray4: '#D1D1D6',
           systemGray5: '#E5E5EA',
           systemGray6: '#F2F2F7',
+        },
+        // Performance/Energy inspired colors
+        perf: {
+          primary: '#2563EB', // Vibrant blue
+          secondary: '#10B981', // Energetic green
+          accent: '#F59E0B', // Energetic orange
+          dark: '#0F172A', // Deep dark
+          darkSurface: '#1E293B', // Dark surface
+          darkCard: '#334155', // Dark card
+          light: '#F8FAFC', // Light background
+          lightSurface: '#FFFFFF',
         }
+      },
+      screens: {
+        'xs': '475px',
       },
       borderRadius: {
         'ios': '12px',

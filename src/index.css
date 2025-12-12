@@ -7,70 +7,209 @@
     @apply antialiased;
   }
   
+  
   body {
-    @apply bg-ios-lightGray text-ios-darkGray;
+    @apply bg-perf-light text-gray-900 dark:bg-perf-dark dark:text-gray-100;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 
       'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "kern" 1;
     text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
 @layer components {
+  /* Navigation */
+  .nav-header {
+    @apply bg-white/80 dark:bg-perf-darkSurface/80 backdrop-blur-xl border-b 
+           border-gray-200/50 dark:border-gray-700/50 shadow-sm;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(255, 255, 255, 0.85) 100%);
+  }
+  
+  .dark .nav-header {
+    background: linear-gradient(180deg, 
+      rgba(30, 41, 59, 0.95) 0%, 
+      rgba(30, 41, 59, 0.85) 100%);
+  }
+  
+  .nav-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .nav-content {
+    @apply flex items-center justify-between h-16 gap-4;
+  }
+  
+  .nav-brand .nav-logo {
+    @apply text-xl font-bold bg-gradient-to-r from-perf-primary to-perf-secondary 
+           bg-clip-text text-transparent hover:opacity-80 transition-opacity;
+  }
+  
+  .nav-links {
+    @apply hidden md:flex items-center gap-1;
+  }
+  
+  .nav-link {
+    @apply px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300
+           hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-all duration-200;
+  }
+  
+  .nav-link.active {
+    @apply bg-perf-primary/10 dark:bg-perf-primary/20 text-perf-primary 
+           dark:text-perf-primary font-semibold;
+  }
+  
+  .nav-actions {
+    @apply flex items-center gap-3;
+  }
+  
+  .theme-toggle {
+    @apply p-2 rounded-lg text-gray-600 dark:text-gray-400 
+           hover:bg-gray-100 dark:hover:bg-gray-700/50 
+           transition-all duration-200 active:scale-95;
+  }
+  
+  .nav-logout {
+    @apply px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300
+           hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-all duration-200;
+  }
+
+  /* Cards */
   .ios-card {
-    @apply bg-white/80 backdrop-blur-xl rounded-ios-lg shadow-ios-card 
-           border border-white/50;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+    @apply bg-white/80 dark:bg-perf-darkCard/80 backdrop-blur-xl rounded-ios-lg 
+           shadow-ios-card border border-gray-200/50 dark:border-gray-700/50;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(255, 255, 255, 0.95) 100%);
+  }
+  
+  .dark .ios-card {
+    background: linear-gradient(135deg, 
+      rgba(51, 65, 85, 0.9) 0%, 
+      rgba(51, 65, 85, 0.95) 100%);
   }
   
   .ios-card-solid {
-    @apply bg-white rounded-ios-lg shadow-ios-card border border-gray-100/50;
+    @apply bg-white dark:bg-perf-darkCard rounded-ios-lg shadow-ios-card 
+           border border-gray-100/50 dark:border-gray-700/50;
   }
   
+  /* Buttons */
   .ios-button {
-    @apply bg-ios-blue text-white font-semibold py-3.5 px-6 rounded-ios-lg
-           shadow-ios active:opacity-90 active:scale-[0.98] 
-           transition-all duration-150 ease-out;
-    background: linear-gradient(180deg, #007AFF 0%, #0051D5 100%);
-  }
-  
-  .ios-button:active {
-    background: linear-gradient(180deg, #0051D5 0%, #003D9E 100%);
+    @apply bg-gradient-to-r from-perf-primary to-perf-secondary text-white 
+           font-semibold py-3.5 px-6 rounded-ios-lg shadow-lg
+           active:opacity-90 active:scale-[0.98] 
+           transition-all duration-150 ease-out
+           hover:shadow-xl hover:scale-[1.02];
   }
   
   .ios-button-secondary {
-    @apply bg-white text-ios-blue font-semibold py-3.5 px-6 rounded-ios-lg
-           shadow-ios border border-ios-blue/20 active:opacity-90 active:scale-[0.98]
+    @apply bg-white dark:bg-perf-darkCard text-perf-primary dark:text-perf-secondary 
+           font-semibold py-3.5 px-6 rounded-ios-lg
+           shadow-ios border border-perf-primary/20 dark:border-perf-secondary/20 
+           active:opacity-90 active:scale-[0.98]
            transition-all duration-150 ease-out;
   }
   
+  /* Inputs */
   .ios-input {
-    @apply w-full px-4 py-3.5 bg-white/90 backdrop-blur-sm 
-           border border-gray-200/60 rounded-ios-lg
-           focus:outline-none focus:ring-2 focus:ring-ios-blue/30 
-           focus:border-ios-blue/50 focus:bg-white
-           transition-all duration-200 text-ios-darkGray;
+    @apply w-full px-4 py-3.5 bg-white/90 dark:bg-perf-darkCard/90 
+           backdrop-blur-sm border border-gray-200/60 dark:border-gray-600/60 
+           rounded-ios-lg
+           focus:outline-none focus:ring-2 focus:ring-perf-primary/30 
+           focus:border-perf-primary/50 focus:bg-white dark:focus:bg-perf-darkCard
+           transition-all duration-200 text-gray-900 dark:text-gray-100;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   }
   
+  .dark .ios-input {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
   .ios-input:focus {
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 1px 2px rgba(0, 0, 0, 0.04);
   }
   
+  .dark .ios-input:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header */
   .ios-header {
-    @apply bg-white/80 backdrop-blur-xl border-b border-gray-200/50;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    @apply bg-white/80 dark:bg-perf-darkSurface/80 backdrop-blur-xl 
+           border-b border-gray-200/50 dark:border-gray-700/50;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(255, 255, 255, 0.85) 100%);
   }
   
+  .dark .ios-header {
+    background: linear-gradient(180deg, 
+      rgba(30, 41, 59, 0.95) 0%, 
+      rgba(30, 41, 59, 0.85) 100%);
+  }
+  
+  /* Progress bars */
   .ios-progress-bar {
-    @apply w-full bg-gray-100/60 rounded-full overflow-hidden;
+    @apply w-full bg-gray-200/60 dark:bg-gray-700/60 rounded-full overflow-hidden;
     height: 6px;
   }
   
   .ios-progress-fill {
     @apply h-full rounded-full transition-all duration-500 ease-out;
   }
+  
+  /* Responsive containers */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-main {
+    @apply max-w-4xl mx-auto px-4 sm:px-5 lg:px-6;
+  }
+  
+  /* Mobile menu (for small screens) */
+  .mobile-menu {
+    @apply md:hidden fixed inset-x-0 bottom-0 bg-white dark:bg-perf-darkSurface 
+           border-t border-gray-200 dark:border-gray-700 z-40;
+  }
+  
+  .mobile-menu-items {
+    @apply flex items-center justify-around h-16 px-4;
+  }
+  
+  .mobile-menu-item {
+    @apply flex flex-col items-center justify-center flex-1 py-2 rounded-lg
+           text-xs font-medium text-gray-600 dark:text-gray-400
+           active:bg-gray-100 dark:active:bg-gray-700/50 transition-colors;
+  }
+  
+  .mobile-menu-item.active {
+    @apply text-perf-primary dark:text-perf-secondary;
+  }
 }
 
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  .text-responsive-xl {
+    @apply text-xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-xl;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive-xl {
+    @apply text-xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-2xl;
+  }
+}

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { storage } from '../utils/storage';
 import { MacroGoals } from '../types';
+import Navigation from '../components/Navigation';
 
 const Profile = () => {
   const { user } = useAuth();
@@ -34,38 +35,31 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ios-lightGray pb-24">
-      <div className="ios-header sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-5 py-5">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-ios-darkGray tracking-tight">Profile</h1>
-            <button
-              onClick={() => navigate('/dashboard')}
-              className="text-ios-gray text-sm font-semibold hover:text-ios-darkGray transition-colors"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-2xl mx-auto px-5 mt-6">
-        <div className="ios-card p-6 mb-6">
-          <div>
-            <h2 className="text-lg font-bold mb-2 text-ios-darkGray">User Information</h2>
-            <p className="text-sm text-ios-gray font-medium">{user?.email}</p>
-          </div>
+    <div className="min-h-screen bg-perf-light dark:bg-perf-dark pb-20 md:pb-24">
+      <Navigation />
+      
+      <div className="container-main pt-6 sm:pt-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">Profile</h1>
         </div>
 
-        <div className="ios-card p-6 mb-6">
-          <h2 className="text-lg font-bold mb-2 text-ios-darkGray">Daily Macro Goals</h2>
-          <p className="text-sm text-ios-gray mb-6 font-medium">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="ios-card p-4 sm:p-6">
+            <div>
+              <h2 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">User Information</h2>
+              <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">{user?.email}</p>
+            </div>
+          </div>
+
+          <div className="ios-card p-4 sm:p-6">
+            <h2 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Daily Macro Goals</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 font-medium">
             Set your daily targets for calories and macronutrients
           </p>
 
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+              <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                 Calories (kcal)
               </label>
               <input
@@ -77,9 +71,9 @@ const Profile = () => {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-3 gap-3 sm:gap-4">
               <div>
-                <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                   Protein (g)
                 </label>
                 <input
@@ -91,7 +85,7 @@ const Profile = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                   Carbs (g)
                 </label>
                 <input
@@ -103,7 +97,7 @@ const Profile = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                   Fat (g)
                 </label>
                 <input
@@ -118,13 +112,13 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="ios-card p-6 mb-6">
-          <h2 className="text-lg font-bold mb-2 text-ios-darkGray">Health Goals</h2>
-          <p className="text-sm text-ios-gray mb-6 font-medium">
-            Set your daily targets for hydration and sleep
-          </p>
+          <div className="ios-card p-4 sm:p-6">
+            <h2 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Health Goals</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 font-medium">
+              Set your daily targets for hydration and sleep
+            </p>
 
-          <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
                 Water (ml)
@@ -136,12 +130,12 @@ const Profile = () => {
                 className="ios-input"
                 placeholder="2000"
               />
-              <p className="text-xs text-ios-gray mt-2 font-medium">
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 font-medium">
                 {(goals.water / 1000).toFixed(1)} liters
               </p>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+              <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                 Sleep (hours)
               </label>
               <input
@@ -153,12 +147,13 @@ const Profile = () => {
                 placeholder="8"
               />
             </div>
+            </div>
           </div>
-        </div>
 
-        <button onClick={handleSave} className="ios-button w-full">
-          Save Goals
-        </button>
+          <button onClick={handleSave} className="ios-button w-full mb-20 md:mb-0">
+            Save Goals
+          </button>
+        </div>
       </div>
     </div>
   );

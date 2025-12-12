@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { storage } from '../utils/storage';
 import { DailyMetrics, Meal } from '../types';
+import Navigation from '../components/Navigation';
 
 const TrackData = () => {
   const navigate = useNavigate();
@@ -95,28 +96,21 @@ const TrackData = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ios-lightGray pb-24">
-      <div className="ios-header sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-5 py-5">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-ios-darkGray tracking-tight">Track Your Data</h1>
-            <button
-              onClick={() => navigate('/dashboard')}
-              className="text-ios-gray text-sm font-semibold hover:text-ios-darkGray transition-colors"
-            >
-              Cancel
-            </button>
-          </div>
+    <div className="min-h-screen bg-perf-light dark:bg-perf-dark pb-20 md:pb-24">
+      <Navigation />
+      
+      <div className="container-main pt-6 sm:pt-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">Track Your Data</h1>
         </div>
-      </div>
 
-      <div className="max-w-2xl mx-auto px-5 mt-6 space-y-6">
+        <div className="space-y-4 sm:space-y-6">
         {/* Nutrition */}
-        <div className="ios-card p-6">
-          <h2 className="text-lg font-bold mb-5 text-ios-darkGray">Nutrition</h2>
+        <div className="ios-card p-4 sm:p-6">
+          <h2 className="text-lg font-bold mb-4 sm:mb-5 text-gray-900 dark:text-gray-100">Nutrition</h2>
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+              <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                 Calories (kcal)
               </label>
               <input
@@ -127,9 +121,9 @@ const TrackData = () => {
                 placeholder="0"
               />
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-3 gap-3 sm:gap-4">
               <div>
-                <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                   Protein (g)
                 </label>
                 <input
@@ -141,7 +135,7 @@ const TrackData = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                   Carbs (g)
                 </label>
                 <input
@@ -153,7 +147,7 @@ const TrackData = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+                <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                   Fat (g)
                 </label>
                 <input
@@ -169,11 +163,11 @@ const TrackData = () => {
         </div>
 
         {/* Health Metrics */}
-        <div className="ios-card p-6">
-          <h2 className="text-lg font-bold mb-5 text-ios-darkGray">Health Metrics</h2>
-          <div className="grid grid-cols-2 gap-4">
+        <div className="ios-card p-4 sm:p-6">
+          <h2 className="text-lg font-bold mb-4 sm:mb-5 text-gray-900 dark:text-gray-100">Health Metrics</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
-              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+              <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                 Water (ml)
               </label>
               <input
@@ -185,7 +179,7 @@ const TrackData = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-ios-darkGray mb-2.5">
+              <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2.5">
                 Sleep (hours)
               </label>
               <input
@@ -201,19 +195,19 @@ const TrackData = () => {
         </div>
 
         {/* Meals */}
-        <div className="ios-card p-6">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-lg font-bold text-ios-darkGray">Meals</h2>
+        <div className="ios-card p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-5">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Meals</h2>
             <button
               onClick={() => setShowMealForm(!showMealForm)}
-              className="text-ios-blue text-sm font-semibold hover:opacity-80 transition-opacity"
+              className="text-perf-primary dark:text-perf-secondary text-sm font-semibold hover:opacity-80 transition-opacity"
             >
               {showMealForm ? 'Cancel' : '+ Add Meal'}
             </button>
           </div>
 
           {showMealForm && (
-            <div className="bg-ios-lightGray/60 p-5 rounded-ios-lg mb-5 space-y-4 border border-gray-100/50">
+            <div className="bg-gray-50 dark:bg-gray-800/50 p-4 sm:p-5 rounded-ios-lg mb-4 sm:mb-5 space-y-3 sm:space-y-4 border border-gray-200/50 dark:border-gray-700/50">
               <input
                 type="text"
                 value={mealName}
@@ -221,7 +215,7 @@ const TrackData = () => {
                 className="ios-input"
                 placeholder="Meal name"
               />
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
                   type="number"
                   value={mealCalories}
@@ -236,7 +230,7 @@ const TrackData = () => {
                   className="ios-input"
                 />
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 xs:grid-cols-3 gap-3">
                 <input
                   type="number"
                   value={mealProtein}
@@ -267,27 +261,27 @@ const TrackData = () => {
 
           <div className="space-y-2.5">
             {meals.length === 0 ? (
-              <p className="text-ios-gray text-sm font-medium">No meals added yet</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">No meals added yet</p>
             ) : (
               meals.map((meal) => (
                 <div
                   key={meal.id}
-                  className="flex items-center justify-between p-4 bg-ios-lightGray/60 rounded-ios-lg border border-gray-100/50"
+                  className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 dark:bg-gray-800/50 rounded-ios-lg border border-gray-200/50 dark:border-gray-700/50"
                 >
-                  <div>
-                    <p className="font-semibold text-ios-darkGray">{meal.name}</p>
-                    <p className="text-sm text-ios-gray mt-0.5">{meal.time}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-gray-900 dark:text-gray-100 truncate">{meal.name}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">{meal.time}</p>
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4 ml-4">
                     <div className="text-right">
-                      <p className="font-bold text-ios-darkGray">{meal.calories} kcal</p>
-                      <p className="text-xs text-ios-gray mt-0.5">
+                      <p className="font-bold text-gray-900 dark:text-gray-100">{meal.calories} kcal</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
                         P: {meal.protein}g C: {meal.carbs}g F: {meal.fat}g
                       </p>
                     </div>
                     <button
                       onClick={() => handleDeleteMeal(meal.id)}
-                      className="text-red-500 text-sm font-semibold hover:text-red-600 transition-colors"
+                      className="text-red-500 dark:text-red-400 text-sm font-semibold hover:text-red-600 dark:hover:text-red-300 transition-colors"
                     >
                       Delete
                     </button>
@@ -298,9 +292,10 @@ const TrackData = () => {
           </div>
         </div>
 
-        <button onClick={handleSave} className="ios-button w-full">
-          Save Data
-        </button>
+          <button onClick={handleSave} className="ios-button w-full mb-20 md:mb-0">
+            Save Data
+          </button>
+        </div>
       </div>
     </div>
   );
