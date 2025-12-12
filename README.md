@@ -61,3 +61,39 @@ npm run build
 
 Currently, all data is stored in the browser's local storage. In a production environment, this would be replaced with a backend API and database.
 
+## Deployment to GitHub Pages
+
+This app is configured for GitHub Pages deployment.
+
+### Quick Deploy
+
+1. **Push to GitHub:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   git push -u origin main
+   ```
+
+2. **Enable GitHub Pages:**
+   - Go to repository **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+   - Save settings
+
+3. **Update base path** (if repo name differs from "bens-app"):
+   - Edit `vite.config.ts`
+   - Change `base: '/bens-app/'` to match your repository name
+   - Commit and push
+
+4. **Access your app:**
+   - After deployment completes, visit:
+   - `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`
+
+See `DEPLOYMENT.md` for detailed instructions.
+
+## Live Demo
+
+Once deployed, your app will be accessible via GitHub Pages at the URL shown above.
+

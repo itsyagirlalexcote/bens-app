@@ -66,9 +66,13 @@ const AppRoutes = () => {
 };
 
 function App() {
+  // Get base path from vite config - automatically matches the base in vite.config.ts
+  // BASE_URL is always available in Vite and matches the base path from vite.config.ts
+  const basePath = import.meta.env.BASE_URL;
+  
   return (
     <AuthProvider>
-      <Router>
+      <Router basename={basePath}>
         <AppRoutes />
       </Router>
     </AuthProvider>
